@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7B80ACFC-A9DA-4224-8C0B-DD1D0BF6D800}</ProjectGuid>
+    <ProjectGuid>{583823A5-C815-4494-8703-87DDA7F087AB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebAPI.Tests</RootNamespace>
@@ -110,7 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebAPI\WebAPI.csproj">
-      <Project>{06310CB9-D546-494F-908E-2FC48E4062BD}</Project>
+      <Project>{0A1F1B71-A748-4A1B-BEB1-23BEF3430E6C}</Project>
       <Name>WebAPI</Name>
     </ProjectReference>
   </ItemGroup>

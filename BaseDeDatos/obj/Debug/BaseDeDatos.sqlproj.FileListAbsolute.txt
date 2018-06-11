@@ -3,12 +3,4 @@ C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\BaseDeD
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\BaseDeDatos\obj\Debug\BaseDeDatos.pdb
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\BaseDeDatos\bin\Debug\BaseDeDatos.dll
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\BaseDeDatos\bin\Debug\BaseDeDatos.pdb
-C:\Users\Gilberth\Desktop\ClinicalManagement\V4\BaseDeDatos\bin\Debug\BaseDeDatos.dacpac
-C:\Users\Gilberth\Desktop\ClinicalManagement\V4\BaseDeDatos\bin\Debug\BaseDeDatos.dll
-C:\Users\Gilberth\Desktop\ClinicalManagement\V4\BaseDeDatos\bin\Debug\BaseDeDatos.pdb
-C:\Users\Gilberth\Desktop\ClinicalManagement\V4\BaseDeDatos\obj\Debug\Model.xml
-C:\Users\Gilberth\Desktop\ClinicalManagement\V4\BaseDeDatos\obj\Debug\refactor.xml
-C:\Users\Gilberth\Desktop\ClinicalManagement\V4\BaseDeDatos\obj\Debug\postdeploy.sql
-C:\Users\Gilberth\Desktop\ClinicalManagement\V4\BaseDeDatos\obj\Debug\predeploy.sql
-C:\Users\Gilberth\Desktop\ClinicalManagement\V4\BaseDeDatos\obj\Debug\BaseDeDatos.dll
-C:\Users\Gilberth\Desktop\ClinicalManagement\V4\BaseDeDatos\obj\Debug\BaseDeDatos.pdb
+C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\BaseDeDatos\obj\Debug\BaseDeDatos.sqlprojAssemblyReference.cache

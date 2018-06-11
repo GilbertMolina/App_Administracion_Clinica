@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdministracionClinicaBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CitasPacientes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdPaciente" Type="Int32" Nullable="false" />
+    <Property Name="IdTipoCita" Type="Int32" Nullable="false" />
+    <Property Name="IdEstadoCita" Type="Int32" Nullable="false" />
+    <Property Name="FechaCita" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="EstadosCitas" Relationship="Self.FK_CitasPacientes_IdEstadoCita" FromRole="CitasPacientes" ToRole="EstadosCitas" />
+    <NavigationProperty Name="Pacientes" Relationship="Self.FK_CitasPacientes_IdPaciente" FromRole="CitasPacientes" ToRole="Pacientes" />
+    <NavigationProperty Name="TiposCitas" Relationship="Self.FK_CitasPacientes_IdTipoCita" FromRole="CitasPacientes" ToRole="TiposCitas" />
+  </EntityType>
+  <EntityType Name="EstadosCitas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CitasPacientes" Relationship="Self.FK_CitasPacientes_IdEstadoCita" FromRole="EstadosCitas" ToRole="CitasPacientes" />
+  </EntityType>
+  <EntityType Name="Pacientes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CitasPacientes" Relationship="Self.FK_CitasPacientes_IdPaciente" FromRole="Pacientes" ToRole="CitasPacientes" />
+  </EntityType>
+  <EntityType Name="TiposCitas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="CitasPacientes" Relationship="Self.FK_CitasPacientes_IdTipoCita" FromRole="TiposCitas" ToRole="CitasPacientes" />
+  </EntityType>
+  <Association Name="FK_CitasPacientes_IdEstadoCita">
+    <End Role="EstadosCitas" Type="Self.EstadosCitas" Multiplicity="1" />
+    <End Role="CitasPacientes" Type="Self.CitasPacientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadosCitas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CitasPacientes">
+        <PropertyRef Name="IdEstadoCita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CitasPacientes_IdPaciente">
+    <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="1" />
+    <End Role="CitasPacientes" Type="Self.CitasPacientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pacientes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CitasPacientes">
+        <PropertyRef Name="IdPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CitasPacientes_IdTipoCita">
+    <End Role="TiposCitas" Type="Self.TiposCitas" Multiplicity="1" />
+    <End Role="CitasPacientes" Type="Self.CitasPacientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposCitas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CitasPacientes">
+        <PropertyRef Name="IdTipoCita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AdministracionClinicaBDContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CitasPacientes" EntityType="Self.CitasPacientes" />
+    <EntitySet Name="EstadosCitas" EntityType="Self.EstadosCitas" />
+    <EntitySet Name="Pacientes" EntityType="Self.Pacientes" />
+    <EntitySet Name="TiposCitas" EntityType="Self.TiposCitas" />
+    <AssociationSet Name="FK_CitasPacientes_IdEstadoCita" Association="Self.FK_CitasPacientes_IdEstadoCita">
+      <End Role="EstadosCitas" EntitySet="EstadosCitas" />
+      <End Role="CitasPacientes" EntitySet="CitasPacientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CitasPacientes_IdPaciente" Association="Self.FK_CitasPacientes_IdPaciente">
+      <End Role="Pacientes" EntitySet="Pacientes" />
+      <End Role="CitasPacientes" EntitySet="CitasPacientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CitasPacientes_IdTipoCita" Association="Self.FK_CitasPacientes_IdTipoCita">
+      <End Role="TiposCitas" EntitySet="TiposCitas" />
+      <End Role="CitasPacientes" EntitySet="CitasPacientes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

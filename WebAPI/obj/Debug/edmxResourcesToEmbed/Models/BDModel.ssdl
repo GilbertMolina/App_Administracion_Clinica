@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AdministracionClinicaBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CitasPacientes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPaciente" Type="int" Nullable="false" />
+    <Property Name="IdTipoCita" Type="int" Nullable="false" />
+    <Property Name="IdEstadoCita" Type="int" Nullable="false" />
+    <Property Name="FechaCita" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EstadosCitas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pacientes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido1" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido2" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TiposCitas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CitasPacientes_IdEstadoCita">
+    <End Role="EstadosCitas" Type="Self.EstadosCitas" Multiplicity="1" />
+    <End Role="CitasPacientes" Type="Self.CitasPacientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadosCitas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CitasPacientes">
+        <PropertyRef Name="IdEstadoCita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CitasPacientes_IdPaciente">
+    <End Role="Pacientes" Type="Self.Pacientes" Multiplicity="1" />
+    <End Role="CitasPacientes" Type="Self.CitasPacientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pacientes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CitasPacientes">
+        <PropertyRef Name="IdPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CitasPacientes_IdTipoCita">
+    <End Role="TiposCitas" Type="Self.TiposCitas" Multiplicity="1" />
+    <End Role="CitasPacientes" Type="Self.CitasPacientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposCitas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CitasPacientes">
+        <PropertyRef Name="IdTipoCita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AdministracionClinicaBDModelStoreContainer">
+    <EntitySet Name="CitasPacientes" EntityType="Self.CitasPacientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstadosCitas" EntityType="Self.EstadosCitas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pacientes" EntityType="Self.Pacientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposCitas" EntityType="Self.TiposCitas" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CitasPacientes_IdEstadoCita" Association="Self.FK_CitasPacientes_IdEstadoCita">
+      <End Role="EstadosCitas" EntitySet="EstadosCitas" />
+      <End Role="CitasPacientes" EntitySet="CitasPacientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CitasPacientes_IdPaciente" Association="Self.FK_CitasPacientes_IdPaciente">
+      <End Role="Pacientes" EntitySet="Pacientes" />
+      <End Role="CitasPacientes" EntitySet="CitasPacientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CitasPacientes_IdTipoCita" Association="Self.FK_CitasPacientes_IdTipoCita">
+      <End Role="TiposCitas" EntitySet="TiposCitas" />
+      <End Role="CitasPacientes" EntitySet="CitasPacientes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
