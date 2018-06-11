@@ -61,3 +61,6 @@ C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI.
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI.Tests\obj\Debug\WebAPI.Tests.pdb
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI.Tests\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI.Tests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI.Tests\bin\Debug\System.Web.Cors.dll
+C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI.Tests\bin\Debug\System.Web.Http.Cors.dll
+C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI.Tests\bin\Debug\System.Web.Http.Cors.xml

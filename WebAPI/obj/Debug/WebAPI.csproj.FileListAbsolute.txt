@@ -123,8 +123,10 @@ C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\bin\Microsoft.AI.Web.xml
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\obj\Debug\WebAPI.csprojAssemblyReference.cache
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\obj\Debug\WebAPI.csproj.CoreCompileInputs.cache
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\obj\Debug\WebAPI.csproj.CopyComplete
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\obj\Debug\WebAPI.dll
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\obj\Debug\WebAPI.pdb
+C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\bin\System.Web.Cors.dll
+C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\bin\System.Web.Http.Cors.dll
+C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\bin\System.Web.Http.Cors.xml

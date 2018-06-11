@@ -1,0 +1,21 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[CitasPacientes] (Table)
+       [dbo].[EstadosCitas] (Table)
+       [dbo].[Pacientes] (Table)
+       [dbo].[TiposCitas] (Table)
+       [dbo].[FK_CitasPacientes_IdPaciente] (Foreign Key)
+       [dbo].[FK_CitasPacientes_IdTipoCita] (Foreign Key)
+       [dbo].[FK_CitasPacientes_IdEstadoCita] (Foreign Key)
+
+** Supporting actions

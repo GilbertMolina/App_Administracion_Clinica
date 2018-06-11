@@ -22,3 +22,17 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.panel-bienvenida {
+    margin-top: 20px;
+    background-color: #28A745;
+    border-color: #28A745; 
+    color: #FFF;
+}
+
+.panel-sobre-nosotros {
+    margin-top: 20px;
+    background-color: #17A2b8;
+    border-color: #17A2b8;
+    color: #FFF;
+}

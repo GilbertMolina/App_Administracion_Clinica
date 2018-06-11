@@ -3,4 +3,3 @@ C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\BaseDeD
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\BaseDeDatos\obj\Debug\BaseDeDatos.pdb
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\BaseDeDatos\bin\Debug\BaseDeDatos.dll
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\BaseDeDatos\bin\Debug\BaseDeDatos.pdb
-C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\BaseDeDatos\obj\Debug\BaseDeDatos.sqlprojAssemblyReference.cache

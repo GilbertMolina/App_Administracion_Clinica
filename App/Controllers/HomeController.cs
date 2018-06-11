@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace App.Controllers
 {
@@ -10,19 +6,18 @@ namespace App.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "Administración Clínica Médica";
+            ViewBag.Message = "Aplicación para la Administración de una Clínica Médica.";
+
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Title = "Sobre nosotros";
+            ViewBag.Message1 = "Aplicación para la Administración de una Clínica Médica.";
+            ViewBag.Message2 = "Desarrollada por Gilbert Molina.";
+            ViewBag.Message3 = "Contacto: gmolinac91@gmail.com.";
 
             return View();
         }
