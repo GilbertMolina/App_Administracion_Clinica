@@ -59,3 +59,5 @@ C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI.
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI.Tests\obj\Debug\WebAPI.Tests.csproj.CopyComplete
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI.Tests\obj\Debug\WebAPI.Tests.dll
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI.Tests\obj\Debug\WebAPI.Tests.pdb
+C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI.Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI.Tests\bin\Debug\EntityFramework.SqlServer.xml

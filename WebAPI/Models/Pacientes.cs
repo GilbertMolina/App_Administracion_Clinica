@@ -13,17 +13,17 @@ namespace WebAPI.Models
 
     public partial class Pacientes
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pacientes()
-        {
-            this.CitasPacientes = new HashSet<CitasPacientes>();
-        }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        //public Pacientes()
+        //{
+        //    this.CitasPacientes = new HashSet<CitasPacientes>();
+        //}
     
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Apellido1 { get; set; }
         public string Apellido2 { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CitasPacientes> CitasPacientes { get; set; }
     }
