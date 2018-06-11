@@ -1,0 +1,9 @@
+﻿CREATE TABLE Pacientes
+(
+	Id INT NOT NULL,
+	Nombre VARCHAR(50) NOT NULL,
+	Apellido1 VARCHAR(50) NOT NULL,
+	Apellido2 VARCHAR(50) NOT NULL,
+	CONSTRAINT PK_Pacientes_Id
+		PRIMARY KEY (Id)
+);
