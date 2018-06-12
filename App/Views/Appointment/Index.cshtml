@@ -32,7 +32,7 @@
         $(document).ready(function () {
             /// <summary>Se ejecuta al cargar la página. Además se encarga de solicitar vía AJAX los datos de las citas.</summary>
 
-            dataTablePacientes = $("#tablaCitas").DataTable({
+            $("#tablaCitas").DataTable({
                 ajax: {
                     url: inicioURLAPI,
                     dataSrc: ""
