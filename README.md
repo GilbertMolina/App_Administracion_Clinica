@@ -9,7 +9,7 @@
 ----
 ## Crear Publish de la base de datos
 1. Abrir la solución de **AppAdministracionClinica** en Visual Studio.
-2. Presionar clic derecho sobre el proyecto de base de datos llamado 'BaseDeDatos', y seleccionar la opción **Publish...**. En la ventana que se despliega presionar sobre el botón de **Edit...** para realizar la conexión y seleccionar la base de datos llamada **AdministracionClinicaBD**.
+2. Presionar clic derecho sobre el proyecto de base de datos llamado **BaseDeDatos**, y seleccionar la opción **Publish...**. En la ventana que se despliega presionar sobre el botón de **Edit...** para realizar la conexión y seleccionar la base de datos llamada **AdministracionClinicaBD**.
 3. Verificar que en la base de datos **AdministracionClinicaBD** se hayan creado las tablas **CitasPacientes**, **EstadosCitas**, **Pacientes** y **TiposCitas**.
 
 ----
