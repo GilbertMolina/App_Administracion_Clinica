@@ -4,7 +4,7 @@
 
 ----
 ## Crear base de datos
-1. Crear una base de datos llamada **AdministracionClinicaBD**.
+1. En SQL Server, crear una base de datos llamada **AdministracionClinicaBD**.
 
 ----
 ## Crear Publish de la base de datos
