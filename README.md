@@ -35,3 +35,17 @@
 1. Para poder visualizar las pantallas de **Pacientes** y **Citas**, es necesario haber hecho el registro de usuario y posteriormente iniciar sesión.
 2. Para poder realizar el registro de usuario, presionar clic sobre el hipervínculo de **Registrar** que se encuentra en la barra de navegación, y posteriormente ingrese los datos que se le solicitan.
 3. Si ya posee un usuario en la aplicación, solo es necesario que inicie sesión en la misma, para esto presione clic sobre el hipervínculo de **Iniciar sesión** que se encuentra en la barra de navegación, y posteriormente ingrese los datos que se le solicitan.
+
+----
+## Aplicación ejecutándose
+1. Al ingresar a la pantalla de iniciar sesión, se deberá de visualizar la siguiente pantalla:
+![Pantalla de Iniciar Sesión](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/01.png)
+
+2. Al ingresar al Index de la aplicación, se deberá de visualizar la siguiente pantalla:
+![Pantalla Bienvenida](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/02.png)
+
+2. Al ingresar al menú de Pacientes de la aplicación, se deberá de visualizar la siguiente pantalla:
+![Pantalla Pacientes](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/03.png)
+
+2. Al ingresar al menú de Citas de la aplicación, se deberá de visualizar la siguiente pantalla:
+![Pantalla Citas](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/04.png)
