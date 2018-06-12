@@ -19,7 +19,7 @@ namespace WebAPI.Controllers
         {
             List<TiposCitasVM> listaTiposCitas = new List<TiposCitasVM>();
 
-            db.TiposCitas.ToList().ForEach(tc => listaTiposCitas.Add(new TiposCitasVM()
+            db.TiposCitas.OrderBy(x => x.Nombre).ToList().ForEach(tc => listaTiposCitas.Add(new TiposCitasVM()
             {
                 Id = tc.Id,
                 Nombre = tc.Nombre

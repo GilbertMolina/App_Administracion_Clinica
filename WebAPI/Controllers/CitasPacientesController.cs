@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebAPI.Models;
@@ -28,7 +29,7 @@ namespace WebAPI.Controllers
                 IdEstadoCita = cp.IdEstadoCita,
                 Pacientes = new PacientesVM() { Id = cp.Pacientes.Id, Nombre = cp.Pacientes.Nombre, Apellido1 = cp.Pacientes.Apellido1, Apellido2 = cp.Pacientes.Apellido2 },
                 TiposCitas = new TiposCitasVM() { Id = cp.TiposCitas.Id, Nombre = cp.TiposCitas.Nombre },
-                EstadosCitas = new EstadosCitasVM() { Id = cp.EstadosCitas.Id, Nombre = cp.EstadosCitas.Nombre },
+                EstadosCitas = new EstadosCitasVM() { Id = cp.EstadosCitas.Id, Nombre = cp.EstadosCitas.Nombre }
             }));
 
             return listaCitasPacientes;
@@ -45,6 +46,22 @@ namespace WebAPI.Controllers
                 return NotFound();
             }
 
+            List<EstadosCitasVM> listaEstadosCitas = new List<EstadosCitasVM>();
+
+            db.EstadosCitas.OrderBy(x => x.Nombre).ToList().ForEach(ec => listaEstadosCitas.Add(new EstadosCitasVM()
+            {
+                Id = ec.Id,
+                Nombre = ec.Nombre
+            }));
+
+            List<TiposCitasVM> listaTiposCitas = new List<TiposCitasVM>();
+
+            db.TiposCitas.OrderBy(x => x.Nombre).ToList().ForEach(tc => listaTiposCitas.Add(new TiposCitasVM()
+            {
+                Id = tc.Id,
+                Nombre = tc.Nombre
+            }));
+
             CitasPacientesVM citaPaciente = new CitasPacientesVM()
             {
                 Id = cp.Id,
@@ -53,8 +70,8 @@ namespace WebAPI.Controllers
                 IdTipoCita = cp.IdTipoCita,
                 IdEstadoCita = cp.IdEstadoCita,
                 Pacientes = new PacientesVM() { Id = cp.Pacientes.Id, Nombre = cp.Pacientes.Nombre, Apellido1 = cp.Pacientes.Apellido1, Apellido2 = cp.Pacientes.Apellido2 },
-                TiposCitas  = new TiposCitasVM() { Id = cp.TiposCitas.Id, Nombre = cp.TiposCitas.Nombre },
-                EstadosCitas = new EstadosCitasVM() { Id = cp.EstadosCitas.Id, Nombre = cp.EstadosCitas.Nombre },
+                ListaEstadosCitas = listaEstadosCitas,
+                ListaTiposCitas  = listaTiposCitas
             };
 
             return Ok(citaPaciente);
@@ -111,7 +128,12 @@ namespace WebAPI.Controllers
 
             if (nuevaCitaPacienteConMismaFechaCita != null)
             {
-                return BadRequest(ModelState);
+                var mensaje = new HttpResponseMessage(HttpStatusCode.BadRequest)
+                {
+                    Content = new StringContent("Violacion unique constraint")
+                };
+
+                throw new HttpResponseException(mensaje);
             }
 
             db.CitasPacientes.Add(citasPacientes);

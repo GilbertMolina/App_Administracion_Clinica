@@ -19,7 +19,7 @@ namespace WebAPI.Controllers
         {
             List<PacientesVM> listaPacientes = new List<PacientesVM>();
 
-            db.Pacientes.ToList().ForEach(p => listaPacientes.Add(new PacientesVM()
+            db.Pacientes.OrderBy(x => x.Id).ToList().ForEach(p => listaPacientes.Add(new PacientesVM()
             {
                 Id = p.Id,
                 Nombre = p.Nombre,

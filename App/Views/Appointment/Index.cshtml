@@ -1,0 +1,149 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Citas</h2>
+<br>
+
+<a class='btn btn-primary agregarRegistro' href='/Appointment/Create/'>Agregar nueva</a>
+<br>
+
+<table id="tablaCitas" class="table table-hover table-striped table-bordered tablaApp">
+    <thead>
+        <tr>
+            <th># Cita</th>
+            <th>Cédula Paciente</th>
+            <th>Nombre Paciente</th>
+            <th>Tipo Cita</th>
+            <th>Fecha Cita</th>
+            <th>Estado Cita</th>
+            <th>Editar</th>
+            <th>Borrar</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        var inicioURLAPI = 'http://localhost:55710/api/citaspacientes/';
+
+        $(document).ready(function () {
+            /// <summary>Se ejecuta al cargar la página. Además se encarga de solicitar vía AJAX los datos de las citas.</summary>
+
+            dataTablePacientes = $("#tablaCitas").DataTable({
+                ajax: {
+                    url: inicioURLAPI,
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "id"
+                    },
+                    {
+                        data: "idPaciente"
+                    },
+                    {
+                        data: "pacientes",
+                        render: function (data) {
+                            return data.nombre + " " + data.apellido1 + " " + data.apellido2;
+                        }
+                    },
+                    {
+                        data: "tiposCitas.nombre"
+                    },
+                    {
+                        data: "fechaCita",
+                        render: function (data) {
+                            return moment(data).format('DD/MM/YYYY hh:mm a');
+                        }
+                    },
+                    {
+                        data: "estadosCitas.nombre"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<a class='btn btn-warning' href='/Appointment/Edit/" + data + "'>Editar</a>";
+                        }
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn btn-danger eliminarCita' onClick='eliminarCita(" + data + ")'>Borrar</button>";
+                        }
+                    }
+                ],
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información, por favor presione el botón de <b>Agregar Nueva</b> para crear un nueva cita.",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });
+
+        function eliminarCita(id) {
+            /// <summary>Elimina el paciente seleccionado.</summary>
+
+            var URLRedireccion = window.location.origin + "/Appointment";
+
+            bootbox.confirm({
+                title: "<b>Advertencia</b>",
+                message: "<strong>Desea borrar la cita seleccionada?</strong>",
+                buttons: {
+                    confirm: {
+                        label: 'Si',
+                        className: 'btn-success'
+                    },
+                    cancel: {
+                        label: 'No',
+                        className: 'btn-danger'
+                    }
+                },
+                callback: function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: inicioURLAPI + id,
+                            method: "DELETE",
+                            success: function () {
+                                window.location.replace(URLRedireccion);
+                            },
+                            error: function (xhr, status, error) {
+                                var error = JSON.parse(xhr.responseText).innerException.innerException.exceptionMessage;
+                                var mensajeError;
+
+                                if (error.includes("REFERENCE constraint")) {
+                                    mensajeError = "<strong>La cita no se puede borrar debido a que tiene citas asignadas.</strong>";
+                                }
+                                else {
+                                    mensajeError = "<strong>La cita no se puede eliminar, consulte con el administrador.</strong>"
+                                }
+
+                                bootbox.alert({
+                                    title: "<b>Error</b>",
+                                    message: mensajeError
+                                });
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+}

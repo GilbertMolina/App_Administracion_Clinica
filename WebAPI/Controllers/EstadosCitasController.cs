@@ -19,7 +19,7 @@ namespace WebAPI.Controllers
         {
             List<EstadosCitasVM> listaEstadosCitas = new List<EstadosCitasVM>();
 
-            db.EstadosCitas.ToList().ForEach(ec => listaEstadosCitas.Add(new EstadosCitasVM()
+            db.EstadosCitas.OrderBy(x => x.Nombre).ToList().ForEach(ec => listaEstadosCitas.Add(new EstadosCitasVM()
             {
                 Id = ec.Id,
                 Nombre = ec.Nombre

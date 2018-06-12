@@ -1,0 +1,123 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Agregar Paciente</h2>
+<br>
+
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="id">Cédula:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="id" placeholder="Digite la cédula" onkeypress="return esNumerico(event)">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="nombre">Nombre:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="nombre" placeholder="Digite el nombre">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="apellido1">Primer Apellido:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="apellido1" placeholder="Digite el primer apellido">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="apellido2">Segundo Apellido:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="apellido2" placeholder="Digite el segundo apellido">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="button" id="nuevoPaciente" class="btn btn-primary" onClick="agregarPaciente()">Agregar</button>
+        </div>
+    </div>
+</form>
+
+@section scripts
+{
+    <script>
+        var inicioURLAPI = 'http://localhost:55710/api/pacientes/';
+
+        function agregarPaciente() {
+            /// <summary>Agrega el paciente con los datos del formulario.</summary>
+
+            var URLRedireccion = window.location.origin + "/Patient";
+
+            var idPaciente = $('#id').val();
+            var nombrePaciente = $('#nombre').val();
+            var apellido1Paciente = $('#apellido1').val();
+            var apellido2Paciente = $('#apellido2').val();
+
+            if (idPaciente == "") {
+                bootbox.alert({
+                    title: "<b>Validación</b>",
+                    message: "La cédula del paciente es requerida."
+                });
+
+                return false;
+            } else if (nombrePaciente == "") {
+                bootbox.alert({
+                    title: "<b>Validación</b>",
+                    message: "El nombre del paciente requerido."
+                });
+
+                return false;
+            } else if (apellido1Paciente == "") {
+                bootbox.alert({
+                    title: "<b>Validación</b>",
+                    message: "El primer apellido es requerido."
+                });
+
+                return false;
+            } else if (apellido2Paciente == "") {
+                bootbox.alert({
+                    title: "<b>Validación</b>",
+                    message: "El segundo apellido es requerido."
+                });
+
+                return false;
+            }
+
+            var paciente = {
+                id: idPaciente,
+                nombre: nombrePaciente,
+                apellido1: apellido1Paciente,
+                apellido2: apellido2Paciente
+            }
+
+            $.ajax({
+                url: inicioURLAPI,
+                method: "POST",
+                dataType: "json",
+                data: paciente,
+                success: function () {
+                    window.location.replace(URLRedireccion);
+                },
+                error: function (xhr, status, error) {
+                    var mensajeError;
+
+                    if (error.includes("Bad Request")) {
+                        mensajeError = "<strong>El paciente no se pudo agregar, consulte con el administrador.</strong>"
+                    }
+
+                    bootbox.alert({
+                        title: "<b>Error</b>",
+                        message: mensajeError
+                    });
+                }
+            });
+        }
+
+        function esNumerico(event) {
+            /// <summary>Verifica si el valor digitado por el usuario es númerico, si es así retorna true, en caso contrario retorna false.</summary>
+            /// <returns type="bool" />
+
+            return event.charCode >= 48
+                && event.charCode <= 57;
+        }
+    </script>
+}

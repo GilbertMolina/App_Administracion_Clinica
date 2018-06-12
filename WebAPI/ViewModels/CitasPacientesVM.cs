@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace WebAPI.ViewModels
 {
@@ -17,6 +18,10 @@ namespace WebAPI.ViewModels
         public EstadosCitasVM EstadosCitas { get; set; }
 
         public TiposCitasVM TiposCitas { get; set; }
+
+        public List<EstadosCitasVM> ListaEstadosCitas { get; set; }
+
+        public List<TiposCitasVM> ListaTiposCitas { get; set; }
 
         public DateTime FechaCita { get; set; }
     }

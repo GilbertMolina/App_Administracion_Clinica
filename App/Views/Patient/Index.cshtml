@@ -1,0 +1,134 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Pacientes</h2>
+<br>
+
+<a class='btn btn-primary agregarRegistro' href='/Patient/Create/'>Agregar nuevo</a>
+
+<table id="tablaPacientes" class="table table-hover table-striped table-bordered tablaApp">
+    <thead>
+        <tr>
+            <th>Cédula</th>
+            <th>Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Editar</th>
+            <th>Borrar</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        var inicioURLAPI = 'http://localhost:55710/api/pacientes/';
+
+        $(document).ready(function () {
+            /// <summary>Se ejecuta al cargar la página. Además se encarga de solicitar vía AJAX los datos de los pacientes.</summary>
+
+            $("#tablaPacientes").DataTable({
+                ajax: {
+                    url: inicioURLAPI,
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "id"
+                    },
+                    {
+                        data: "nombre"
+                    },
+                    {
+                        data: "apellido1"
+                    },
+                    {
+                        data: "apellido2"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<a class='btn btn-warning' href='/Patient/Edit/" + data + "'>Editar</a>";
+                        }
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn btn-danger' onClick='eliminarPaciente(" + data + ")'>Borrar</button>";
+                        }
+                    }
+                ],
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información, por favor presione el botón de <b>Agregar Nuevo</b> para crear un nuevo paciente.",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });
+
+        function eliminarPaciente(id) {
+            /// <summary>Elimina el paciente seleccionado.</summary>
+
+            var URLRedireccion = window.location.origin + "/Patient";
+
+            bootbox.confirm({
+                title: "<b>Advertencia</b>",
+                message: "<strong>Desea borrar el paciente seleccionado?</strong>",
+                buttons: {
+                    confirm: {
+                        label: 'Si',
+                        className: 'btn-success'
+                    },
+                    cancel: {
+                        label: 'No',
+                        className: 'btn-danger'
+                    }
+                },
+                callback: function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: inicioURLAPI + id,
+                            method: "DELETE",
+                            success: function () {
+                                window.location.replace(URLRedireccion);
+                            },
+                            error: function (xhr, status, error) {
+                                var error = JSON.parse(xhr.responseText).innerException.innerException.exceptionMessage;
+                                var mensajeError;
+
+                                if (error.includes("REFERENCE constraint")) {
+                                    mensajeError = "<strong>El paciente no se puede borrar debido a que tiene citas asignadas.</strong>";
+                                }
+                                else {
+                                    mensajeError = "<strong>El paciente no se puede eliminar, consulte con el administrador.</strong>"
+                                }
+
+                                bootbox.alert({
+                                    title: "<b>Error</b>",
+                                    message: mensajeError
+                                });
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+}

@@ -1,0 +1,171 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Agregar Cita</h2>
+<br>
+
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="paciente">Paciente:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="pacientes">
+                <option value="">Seleccione</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="apellido1">Tipo de cita:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="tiposCita">
+                <option value="">Seleccione</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="apellido2">Estado de la cita:</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="estadosCita">
+                <option value="">Seleccione</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="fechaCita" style="margin-right: 15px;">Fecha de la cita:</label>
+        <div class="input-group date col-sm-3" id="fechaCita" style="width: 280px;">
+            <input type="text" class="form-control" />
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="button" id="nuevaCita" class="btn btn-primary" onClick='agregarCita()'>Agregar</button>
+        </div>
+    </div>
+</form>
+
+@section scripts
+{
+    <script>
+        var inicioURLAPICitas = 'http://localhost:55710/api/citaspacientes/';
+        var inicioURLAPIPacientes = 'http://localhost:55710/api/pacientes/';
+        var inicioURLAPITiposCitas = 'http://localhost:55710/api/tiposcitas/';
+        var inicioURLAPIEstadosCitas = 'http://localhost:55710/api/estadoscitas/';
+
+        $(document).ready(function () {
+            /// <summary>Se ejecuta al cargar la página. Además se encarga de solicitar vía AJAX los datos de la cita a editar.</summary>
+
+            $("#fechaCita").datetimepicker({
+                format: 'DD/MM/YYYY hh:mm a'
+            });
+
+            // Se cargan los pacientes
+            $.ajax({
+                url: inicioURLAPIPacientes,
+                success: function (data) {
+                    $.each(data, function () {
+                        $("#pacientes").append($("<option/>").val(this.id).text(this.id + " - " + this.nombre + " " + this.apellido1 + " " + this.apellido2));
+                    });
+                }
+            });
+
+            // Se cargan los tipos de citas
+            $.ajax({
+                url: inicioURLAPITiposCitas,
+                success: function (data) {
+                    $.each(data, function () {
+                        $("#tiposCita").append($("<option/>").val(this.id).text(this.nombre));
+                    });
+                }
+            });
+
+            // Se cargan los estados de citas
+            $.ajax({
+                url: inicioURLAPIEstadosCitas,
+                success: function (data) {
+                    $.each(data, function () {
+                        $("#estadosCita").append($("<option/>").val(this.id).text(this.nombre));
+                    });
+                }
+            });
+        });
+
+        function agregarCita() {
+            /// <summary>Agrega la cita con los datos del formulario.</summary>
+
+            var URLRedireccion = window.location.origin + "/Appointment";
+
+            var idPaciente = $('#pacientes').val();
+            var idTipoCita = $("#tiposCita").val();
+            var idEstadoCita = $("#estadosCita").val();
+
+            if (idPaciente == "") {
+                bootbox.alert({
+                    title: "<b>Validación</b>",
+                    message: "El paciente es requerido."
+                });
+
+                return false;
+            } else if (idTipoCita == "") {
+                bootbox.alert({
+                    title: "<b>Validación</b>",
+                    message: "El tipo de cita es requerido."
+                });
+
+                return false;
+            } else if (idEstadoCita == "") {
+                bootbox.alert({
+                    title: "<b>Validación</b>",
+                    message: "El estado de cita es requerido."
+                });
+
+                return false;
+            } else if ($("#fechaCita").data("DateTimePicker").date() == null) {
+                bootbox.alert({
+                    title: "<b>Validación</b>",
+                    message: "La fecha de la cita es requerida."
+                });
+
+                return false;
+            }
+
+            var fechaCita = $("#fechaCita").data("DateTimePicker").date()._d;
+            var fechaFormateada = moment(fechaCita).format('YYYY-MM-DDTHH:mm:ss');
+
+            var cita = {
+                idPaciente: idPaciente,
+                idTipoCita: idTipoCita,
+                idEstadoCita: idEstadoCita,
+                fechaCita: fechaFormateada
+            }
+
+            $.ajax({
+                url: inicioURLAPICitas,
+                method: "POST",
+                dataType: "json",
+                data: cita,
+                success: function () {
+                    window.location.replace(URLRedireccion);
+                },
+                error: function (xhr, status, error) {
+                    var error = xhr.responseText;
+                    var mensajeError;
+
+                    if (error.includes("Violacion unique constraint")) {
+                        mensajeError = "<b>Lo sentimos, el paciente ya tiene asignada una cita para el mismo día.</b>";
+                    }
+                    else {
+                        mensajeError = "<b>La cita no se pudo agregar, consulte con el administrador.</b>"
+                    }
+
+                    bootbox.alert({
+                        title: "<b>Error</b>",
+                        message: mensajeError
+                    });
+                }
+            });
+        }
+    </script>
+}

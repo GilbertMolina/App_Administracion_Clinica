@@ -4,16 +4,3 @@
     <br>
     <p class="lead">@ViewBag.Message</p>
 </div>
-
-@section scripts
-{
-    <script>
-        $(document).ready(function () {
-            $.ajax({
-                url: "http://localhost:55710/api/citaspacientes"
-            }).then(function (response) {
-                console.log(response);
-            });
-        });
-    </script>
-}

@@ -130,3 +130,4 @@ C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\bin\System.Web.Cors.dll
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\bin\System.Web.Http.Cors.dll
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\bin\System.Web.Http.Cors.xml
+C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\WebAPI\obj\Debug\WebAPI.csprojAssemblyReference.cache
