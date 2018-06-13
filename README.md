@@ -13,6 +13,12 @@
 3. Verificar que en la base de datos **AdministracionClinicaBD** se hayan creado las tablas **CitasPacientes**, **EstadosCitas**, **Pacientes** y **TiposCitas**.
 
 ----
+## Configuración de archivos Web.config
+1. Abrir el archivo **Web.config** del proyecto **App** y modificar las líneas **12** y **13** para cambiar el nombre del servidor de base de datos en la propiedad **data source**, por el que corresponda.
+2. Abrir el archivo **Web.config** del proyecto **WebAPI** y modificar la línea **13** para cambiar el nombre del servidor de base de datos en la propiedad **data source**, por el que corresponda.
+3. Abrir el archivo **Web.config** del proyecto **WebAPI.Tests** y modificar la línea **13** para cambiar el nombre del servidor de base de datos en la propiedad **data source**, por el que corresponda.
+
+----
 ## Ejecutar proyecto del WebAPI y proyecto App
 1. Presionar clic derecho sobre el proyecto de **WebAPI** y seleccionar la opción de **Set as StartUp Project** e ir a la opción de **DEBUG** en la barra de herramientas y seleccionar la opción de **Start Without Debugging**.
 2. Presionar clic derecho sobre el proyecto de **App** y seleccionar la opción de **Set as StartUp Project** e ir a la opción de **DEBUG** en la barra de herramientas y seleccionar la opción de **Start Without Debugging**.
