@@ -64,14 +64,23 @@
 
 ## Aplicación ejecutándose
 
-1. Al ingresar a la pantalla de iniciar sesión, se deberá de visualizar la siguiente pantalla:
-![Pantalla de Iniciar Sesión](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/01.png)
-
-2. Al ingresar al Index de la aplicación, se deberá de visualizar la siguiente pantalla:
+1. Al ingresar a la aplicación, se deberá de visualizar la siguiente pantalla:
 ![Pantalla Bienvenida](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/02.png)
 
-2. Al ingresar al menú de Pacientes de la aplicación, se deberá de visualizar la siguiente pantalla:
+2. Al ingresar a la pantalla de **Iniciar sesión**, se deberá de visualizar la siguiente pantalla:
+![Pantalla de Iniciar Sesión](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/01.png)
+
+3. Al ingresar al menú de **Pacientes** de la aplicación, se deberá de visualizar la siguiente pantalla:
 ![Pantalla Pacientes](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/03.png)
 
-2. Al ingresar al menú de Citas de la aplicación, se deberá de visualizar la siguiente pantalla:
+4. Al ingresar al menú de **Citas** de la aplicación, se deberá de visualizar la siguiente pantalla:
 ![Pantalla Citas](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/04.png)
+
+5. Al ingresar al submenú de **Tipos** en el menú de **Administración** de la aplicación, se deberá de visualizar la siguiente pantalla:
+![Pantalla Tipo](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/05.png)
+
+6. Al ingresar al submenú de **Estados** en el menú de **Administración** de la aplicación, se deberá de visualizar la siguiente pantalla:
+![Pantalla Estados](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/06.png)
+
+6. Al ingresar al menú de **Sobre nosotros** de la aplicación, se deberá de visualizar la siguiente pantalla:
+![Pantalla Sobre nosotros](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/07.png)
