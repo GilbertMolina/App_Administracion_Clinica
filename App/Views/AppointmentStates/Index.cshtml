@@ -2,5 +2,125 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Estados de citas</h2>
+<br>
 
+<a class='btn btn-primary agregarRegistro' href='/AppointmentStates/Create/'>Agregar nuevo</a>
+
+<table id="tablaEstados" class="table table-hover table-striped table-bordered tablaApp">
+    <thead>
+        <tr>
+            <th>Estado #</th>
+            <th>Nombre</th>
+            <th>Editar</th>
+            <th>Borrar</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        var inicioURLAPI = 'http://localhost:55710/api/estadoscitas/';
+
+        $(document).ready(function () {
+            /// <summary>Se ejecuta al cargar la página. Además se encarga de solicitar vía AJAX los datos de los estados.</summary>
+
+            $("#tablaEstados").DataTable({
+                ajax: {
+                    url: inicioURLAPI,
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "id"
+                    },
+                    {
+                        data: "nombre"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<a class='btn btn-warning' href='/AppointmentStates/Edit/" + data + "'><i class='fas fa-edit'></i></a>";
+                        }
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn btn-danger' onClick='eliminarEstado(" + data + ")'><i class='far fa-trash-alt'></i></button>";
+                        }
+                    }
+                ],
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay información, por favor presione el botón de <b>Agregar Nuevo</b> para crear un nuevo paciente.",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of 0 entradas",
+                    "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });
+
+        function eliminarEstado(id) {
+            /// <summary>Elimina el estado seleccionado.</summary>
+
+            var URLRedireccion = window.location.origin + "/AppointmentStates";
+
+            bootbox.confirm({
+                title: "<b>Advertencia</b>",
+                message: "<b>Desea borrar el estado seleccionado?</b>",
+                buttons: {
+                    confirm: {
+                        label: 'Si',
+                        className: 'btn-success'
+                    },
+                    cancel: {
+                        label: 'No',
+                        className: 'btn-danger'
+                    }
+                },
+                callback: function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: inicioURLAPI + id,
+                            method: "DELETE",
+                            success: function () {
+                                window.location.replace(URLRedireccion);
+                            },
+                            error: function (xhr, status, error) {
+                                var error = JSON.parse(xhr.responseText).innerException.innerException.exceptionMessage;
+                                var mensajeError;
+
+                                if (error.includes("REFERENCE constraint")) {
+                                    mensajeError = "<b>El estado no se puede borrar debido a que tiene citas asignadas.</b>";
+                                }
+                                else {
+                                    mensajeError = "<b>El estado no se puede eliminar, consulte con el administrador.</b>"
+                                }
+
+                                bootbox.alert({
+                                    title: "<b>Error</b>",
+                                    message: mensajeError
+                                });
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+}

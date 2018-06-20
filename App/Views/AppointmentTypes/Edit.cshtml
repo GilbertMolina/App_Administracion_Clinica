@@ -2,5 +2,124 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Editar Tipo</h2>
+<br>
 
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="id">Estado #:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="id">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="nombre">Nombre:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="nombre" placeholder="Digite el nombre">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="button" id="modificarTipo" class="btn btn-primary" onClick="editarTipo()">Editar</button>
+        </div>
+    </div>
+</form>
+
+@section scripts
+{
+    <script>
+        var inicioURLAPI = 'http://localhost:55710/api/tiposcitas/';
+
+        $(document).ready(function () {
+            /// <summary>Se ejecuta al cargar la página. Además se encarga de solicitar vía AJAX los datos del tipo a editar.</summary>
+
+            var idTipo = obtenerParametroURL();
+
+            $.ajax({
+                url: inicioURLAPI + idTipo,
+                success: function (data) {
+                    $('#id').val(data.id);
+                    $('#nombre').val(data.nombre);
+
+                    $('#id').prop("disabled", true);
+
+                    $('#modificarTipo').prop("disabled", false);
+                },
+                error: function (xhr, status, error) {
+                    var mensajeError;
+
+                    if (error.includes("Not Found")) {
+                        mensajeError = "<b>No se encontró ningun tipo de cita con el número proporcionado.</b>";
+                    }
+                    else {
+                        mensajeError = "<b>Hubo un problema al obtener el tipo de cita, consulte con el administrador.</b>"
+                    }
+
+                    $('#modificarTipo').prop("disabled", true);
+
+                    bootbox.alert({
+                        title: "<b>Error</b>",
+                        message: mensajeError
+                    });
+                }
+            });
+        });
+
+        function editarTipo() {
+            /// <summary>Edita el tipo con los datos del formulario.</summary>
+
+            var URLRedireccion = window.location.origin + "/AppointmentTypes";
+
+            var idTipo = $('#id').val();
+            var nombreTipo = $('#nombre').val();
+
+            if (nombreTipo == "") {
+                bootbox.alert({
+                    title: "<b>Error</b>",
+                    message: "<b>El nombre del tipo de cita es requerido.</b>"
+                });
+
+                return false;
+            }
+
+            var tipoCita = {
+                id: idTipo,
+                nombre: nombreTipo
+            }
+
+            $.ajax({
+                url: inicioURLAPI + idTipo,
+                method: "PUT",
+                dataType: "json",
+                data: tipoCita,
+                success: function () {
+                    window.location.replace(URLRedireccion);
+                },
+                error: function (xhr, status, error) {
+                    var mensajeError;
+
+                    if (error.includes("Bad Request")) {
+                        mensajeError = "<b>No se encontró en la base de datos el tipo de cita que desea editar.</b>";
+                    }
+                    else {
+                        mensajeError = "<b>El tipo de cita no se puede editar, consulte con el administrador.</b>"
+                    }
+
+                    bootbox.alert({
+                        title: "<b>Error</b>",
+                        message: mensajeError
+                    });
+                }
+            });
+        }
+
+        function obtenerParametroURL() {
+            /// <summary>Obtiene el parámetro pasado en la URL.</summary>
+            /// <returns type="string" />
+
+            var URLPagina = window.location.href;
+            var indiceUltimoSlash = URLPagina.lastIndexOf("/");
+            return (indiceUltimoSlash > 0 && URLPagina.length - 1 != indiceUltimoSlash) ? URLPagina.substring(indiceUltimoSlash + 1) : 0;
+        };
+    </script>
+}
