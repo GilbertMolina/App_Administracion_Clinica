@@ -11,12 +11,12 @@
 <table id="tablaCitas" class="table table-hover table-striped table-bordered tablaApp">
     <thead>
         <tr>
-            <th># Cita</th>
-            <th>Cédula Paciente</th>
-            <th>Nombre Paciente</th>
-            <th>Tipo Cita</th>
-            <th>Fecha Cita</th>
-            <th>Estado Cita</th>
+            <th>Cita #</th>
+            <th>Cédula del paciente</th>
+            <th>Nombre del paciente</th>
+            <th>Tipo de cita</th>
+            <th>Fecha de la cita</th>
+            <th>Estado de la cita</th>
             <th>Editar</th>
             <th>Borrar</th>
         </tr>
@@ -65,13 +65,13 @@
                     {
                         data: "id",
                         render: function (data) {
-                            return "<a class='btn btn-warning' href='/Appointment/Edit/" + data + "'>Editar</a>";
+                            return "<a class='btn btn-warning' href='/Appointment/Edit/" + data + "'><i class='fas fa-edit'></i></a>";
                         }
                     },
                     {
                         data: "id",
                         render: function (data) {
-                            return "<button class='btn btn-danger eliminarCita' onClick='eliminarCita(" + data + ")'>Borrar</button>";
+                            return "<button class='btn btn-danger eliminarCita' onClick='eliminarCita(" + data + ")'><i class='far fa-trash-alt'></i></button>";
                         }
                     }
                 ],
@@ -105,7 +105,7 @@
 
             bootbox.confirm({
                 title: "<b>Advertencia</b>",
-                message: "<strong>Desea borrar la cita seleccionada?</strong>",
+                message: "<b>Desea borrar la cita seleccionada?</b>",
                 buttons: {
                     confirm: {
                         label: 'Si',
@@ -126,14 +126,7 @@
                             },
                             error: function (xhr, status, error) {
                                 var error = JSON.parse(xhr.responseText).innerException.innerException.exceptionMessage;
-                                var mensajeError;
-
-                                if (error.includes("REFERENCE constraint")) {
-                                    mensajeError = "<strong>La cita no se puede borrar debido a que tiene citas asignadas.</strong>";
-                                }
-                                else {
-                                    mensajeError = "<strong>La cita no se puede eliminar, consulte con el administrador.</strong>"
-                                }
+                                var mensajeError = "<b>La cita no se puede borrar, consulte con el administrador.</b>"
 
                                 bootbox.alert({
                                     title: "<b>Error</b>",

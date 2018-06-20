@@ -31,6 +31,7 @@ namespace App
                       "~/Content/bootstrap-lumen.css",
                       "~/Content/datatables/css/datatables.bootstrap.css",
                       "~/Content/bootstrap-datetimepicker.css",
+                      "~/Content/FontAwesome/css/fontawesome-all.min.css",
                       "~/Content/site.css"
                       ));
         }

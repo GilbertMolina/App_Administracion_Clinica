@@ -12,8 +12,8 @@
         <tr>
             <th>Cédula</th>
             <th>Nombre</th>
-            <th>Primer Apellido</th>
-            <th>Segundo Apellido</th>
+            <th>Primer apellido</th>
+            <th>Segundo apellido</th>
             <th>Editar</th>
             <th>Borrar</th>
         </tr>
@@ -50,13 +50,13 @@
                     {
                         data: "id",
                         render: function (data) {
-                            return "<a class='btn btn-warning' href='/Patient/Edit/" + data + "'>Editar</a>";
+                            return "<a class='btn btn-warning' href='/Patient/Edit/" + data + "'><i class='fas fa-edit'></i></a>";
                         }
                     },
                     {
                         data: "id",
                         render: function (data) {
-                            return "<button class='btn btn-danger' onClick='eliminarPaciente(" + data + ")'>Borrar</button>";
+                            return "<button class='btn btn-danger' onClick='eliminarPaciente(" + data + ")'><i class='far fa-trash-alt'></i></button>";
                         }
                     }
                 ],
@@ -90,7 +90,7 @@
 
             bootbox.confirm({
                 title: "<b>Advertencia</b>",
-                message: "<strong>Desea borrar el paciente seleccionado?</strong>",
+                message: "<b>Desea borrar el paciente seleccionado?</b>",
                 buttons: {
                     confirm: {
                         label: 'Si',
@@ -114,10 +114,10 @@
                                 var mensajeError;
 
                                 if (error.includes("REFERENCE constraint")) {
-                                    mensajeError = "<strong>El paciente no se puede borrar debido a que tiene citas asignadas.</strong>";
+                                    mensajeError = "<b>El paciente no se puede borrar debido a que tiene citas asignadas.</b>";
                                 }
                                 else {
-                                    mensajeError = "<strong>El paciente no se puede eliminar, consulte con el administrador.</strong>"
+                                    mensajeError = "<b>El paciente no se puede eliminar, consulte con el administrador.</b>"
                                 }
 
                                 bootbox.alert({

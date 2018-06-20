@@ -4,3 +4,9 @@ C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\BaseDeD
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\BaseDeDatos\bin\Debug\BaseDeDatos.dll
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\BaseDeDatos\bin\Debug\BaseDeDatos.pdb
 C:\Users\Gilberth\Desktop\ClinicalManagement\V3\AppAdministracionClinica\BaseDeDatos\obj\Debug\BaseDeDatos.sqlprojAssemblyReference.cache
+C:\Users\Gilberth\Documents\GitHub\App_Administracion_Clinica\BaseDeDatos\bin\Debug\BaseDeDatos.dacpac
+C:\Users\Gilberth\Documents\GitHub\App_Administracion_Clinica\BaseDeDatos\bin\Debug\BaseDeDatos.dll
+C:\Users\Gilberth\Documents\GitHub\App_Administracion_Clinica\BaseDeDatos\bin\Debug\BaseDeDatos.pdb
+C:\Users\Gilberth\Documents\GitHub\App_Administracion_Clinica\BaseDeDatos\obj\Debug\BaseDeDatos.sqlprojAssemblyReference.cache
+C:\Users\Gilberth\Documents\GitHub\App_Administracion_Clinica\BaseDeDatos\obj\Debug\BaseDeDatos.dll
+C:\Users\Gilberth\Documents\GitHub\App_Administracion_Clinica\BaseDeDatos\obj\Debug\BaseDeDatos.pdb

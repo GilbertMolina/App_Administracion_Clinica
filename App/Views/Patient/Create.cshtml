@@ -19,13 +19,13 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-2" for="apellido1">Primer Apellido:</label>
+        <label class="control-label col-sm-2" for="apellido1">Primer apellido:</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="apellido1" placeholder="Digite el primer apellido">
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-2" for="apellido2">Segundo Apellido:</label>
+        <label class="control-label col-sm-2" for="apellido2">Segundo apellido:</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="apellido2" placeholder="Digite el segundo apellido">
         </div>
@@ -55,28 +55,28 @@
             if (idPaciente == "") {
                 bootbox.alert({
                     title: "<b>Validación</b>",
-                    message: "La cédula del paciente es requerida."
+                    message: "<b>La cédula del paciente es requerida.</b>"
                 });
 
                 return false;
             } else if (nombrePaciente == "") {
                 bootbox.alert({
                     title: "<b>Validación</b>",
-                    message: "El nombre del paciente requerido."
+                    message: "<b>El nombre del paciente requerido.</b>"
                 });
 
                 return false;
             } else if (apellido1Paciente == "") {
                 bootbox.alert({
                     title: "<b>Validación</b>",
-                    message: "El primer apellido es requerido."
+                    message: "<b>El primer apellido del paciente es requerido.</b>"
                 });
 
                 return false;
             } else if (apellido2Paciente == "") {
                 bootbox.alert({
                     title: "<b>Validación</b>",
-                    message: "El segundo apellido es requerido."
+                    message: "<b>El segundo apellido del paciente es requerido.</b>"
                 });
 
                 return false;
@@ -101,7 +101,7 @@
                     var mensajeError;
 
                     if (error.includes("Bad Request")) {
-                        mensajeError = "<strong>El paciente no se pudo agregar, consulte con el administrador.</strong>"
+                        mensajeError = "<b>El paciente no se pudo agregar, consulte con el administrador.</b>"
                     }
 
                     bootbox.alert({

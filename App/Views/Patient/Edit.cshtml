@@ -63,10 +63,10 @@
                     var mensajeError;
 
                     if (error.includes("Not Found")) {
-                        mensajeError = "<strong>No se encontró ningun paciente con el número de cédula proporcionado.</strong>";
+                        mensajeError = "<b>No se encontró ningun paciente con el número de cédula proporcionado.</b>";
                     }
                     else {
-                        mensajeError = "<strong>Hubo un problema al obtener el paciente, consulte con el administrador.</strong>"
+                        mensajeError = "<b>Hubo un problema al obtener el paciente, consulte con el administrador.</b>"
                     }
 
                     $('#modificarPaciente').prop("disabled", true);
@@ -92,28 +92,28 @@
             if (idPaciente == "") {
                 bootbox.alert({
                     title: "<b>Error</b>",
-                    message: "La cédula del paciente es requerida."
+                    message: "<b>La cédula del paciente es requerida.</b>"
                 });
 
                 return false;
             } else if (nombrePaciente == "") {
                 bootbox.alert({
                     title: "<b>Error</b>",
-                    message: "El nombre del paciente requerido."
+                    message: "<b>El nombre del paciente requerido.</b>"
                 });
 
                 return false;
             } else if (apellido1Paciente == "") {
                 bootbox.alert({
                     title: "<b>Error</b>",
-                    message: "El primer apellido es requerido."
+                    message: "<b>El primer apellido del paciente es requerido.</b>"
                 });
 
                 return false;
             } else if (apellido2Paciente == "") {
                 bootbox.alert({
                     title: "<b>Error</b>",
-                    message: "El segundo apellido es requerido."
+                    message: "<b>El segundo apellido del paciente es requerido.</b>"
                 });
 
                 return false;
@@ -138,10 +138,10 @@
                     var mensajeError;
 
                     if (error.includes("Bad Request")) {
-                        mensajeError = "<strong>No se encontró en la base de datos el paciente que desea editar.</strong>";
+                        mensajeError = "<b>No se encontró en la base de datos el paciente que desea editar.</b>";
                     }
                     else {
-                        mensajeError = "<strong>El paciente no se puede editar, consulte con el administrador.</strong>"
+                        mensajeError = "<b>El paciente no se puede editar, consulte con el administrador.</b>"
                     }
 
                     bootbox.alert({

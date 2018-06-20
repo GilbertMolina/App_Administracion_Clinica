@@ -197,6 +197,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
+    <Compile Include="Controllers\AppointmentStatesController.cs" />
+    <Compile Include="Controllers\AppointmentTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
@@ -324,6 +326,19 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\FontAwesome\css\fa-brands.css" />
+    <Content Include="Content\FontAwesome\css\fa-brands.min.css" />
+    <Content Include="Content\FontAwesome\css\fa-regular.css" />
+    <Content Include="Content\FontAwesome\css\fa-regular.min.css" />
+    <Content Include="Content\FontAwesome\css\fa-solid.css" />
+    <Content Include="Content\FontAwesome\css\fa-solid.min.css" />
+    <Content Include="Content\FontAwesome\css\fontawesome-all.css" />
+    <Content Include="Content\FontAwesome\css\fontawesome-all.min.css" />
+    <Content Include="Content\FontAwesome\css\fontawesome.css" />
+    <Content Include="Content\FontAwesome\css\fontawesome.min.css" />
+    <Content Include="Content\FontAwesome\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\FontAwesome\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\FontAwesome\webfonts\fa-solid-900.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -339,6 +354,18 @@
     </Content>
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Content\FontAwesome\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\FontAwesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\FontAwesome\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\FontAwesome\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\FontAwesome\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\FontAwesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\FontAwesome\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\FontAwesome\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\FontAwesome\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\FontAwesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\FontAwesome\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\FontAwesome\webfonts\fa-solid-900.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -458,6 +485,12 @@
     <Content Include="Views\Appointment\Edit.cshtml" />
     <Content Include="Views\Patient\Create.cshtml" />
     <Content Include="Views\Appointment\Create.cshtml" />
+    <Content Include="Views\AppointmentTypes\Index.cshtml" />
+    <Content Include="Views\AppointmentTypes\Edit.cshtml" />
+    <Content Include="Views\AppointmentTypes\Create.cshtml" />
+    <Content Include="Views\AppointmentStates\Index.cshtml" />
+    <Content Include="Views\AppointmentStates\Edit.cshtml" />
+    <Content Include="Views\AppointmentStates\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
