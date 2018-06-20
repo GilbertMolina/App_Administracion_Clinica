@@ -22,7 +22,7 @@
 
 1. Abrir el archivo **Web.config** del proyecto **App** y modificar las líneas **12** y **13** para cambiar el nombre del servidor de base de datos en la propiedad **data source**, por el que corresponda.
 2. Abrir el archivo **Web.config** del proyecto **WebAPI** y modificar la línea **13** para cambiar el nombre del servidor de base de datos en la propiedad **data source**, por el que corresponda.
-3. Abrir el archivo **Web.config** del proyecto **WebAPI.Tests** y modificar la línea **13** para cambiar el nombre del servidor de base de datos en la propiedad **data source**, por el que corresponda.
+3. Abrir el archivo **App.config** del proyecto **WebAPI.Tests** y modificar la línea **13** para cambiar el nombre del servidor de base de datos en la propiedad **data source**, por el que corresponda.
 
 ----
 
