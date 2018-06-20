@@ -65,10 +65,10 @@
 ## Aplicación ejecutándose
 
 1. Al ingresar a la aplicación, se deberá de visualizar la siguiente pantalla:
-![Pantalla Bienvenida](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/02.png)
+![Pantalla Bienvenida](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/01.png)
 
 2. Al ingresar a la pantalla de **Iniciar sesión**, se deberá de visualizar la siguiente pantalla:
-![Pantalla de Iniciar Sesión](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/01.png)
+![Pantalla de Iniciar Sesión](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/02.png)
 
 3. Al ingresar al menú de **Pacientes** de la aplicación, se deberá de visualizar la siguiente pantalla:
 ![Pantalla Pacientes](https://github.com/GilbertMolina/App_Administracion_Clinica/blob/master/App/ImagenesAplicacion/03.png)
